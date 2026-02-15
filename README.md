@@ -1,7 +1,7 @@
 # QQBot
-使用Napcat和NoneBot搭建的小型QQ机器人
+使用Napcat和NoneBot搭建的小型QQ机器人（python312）
 
-== 构建环境时参考资料：https://napneko.github.io/
+构建环境时参考资料：https://napneko.github.io/
 
 需要WebSocket客户端进行代理。
 
