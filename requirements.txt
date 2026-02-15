@@ -1,0 +1,9 @@
+nonebot2[fastapi]>=2.4.0
+nonebot-adapter-onebot>=2.4.0
+httpx>=0.24.0
+pydantic>=2.0.0
+volcengine-python-sdk[ark]
+jieba
+wordcloud
+transformers
+torch --index-url https://download.pytorch.org/whl/cpu
