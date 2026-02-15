@@ -1,26 +1,112 @@
+
 # 🤖 NoneBot QQ 机器人
 
-基于 [NoneBot2](https://nonebot.dev/) 框架的 QQ 机器人项目。
+基于 [NoneBot2](https://nonebot.dev/) 框架的多功能 QQ 机器人，支持群聊互动、AI 对话、签到、提醒、热搜、词云等丰富插件。
+
+---
 
 ## 📂 项目结构
 
 ```
 Nonebot/
-├── bot.py                          # 机器人入口文件
-├── .env                            # 环境变量配置
-├── .env.prod                       # 生产环境配置
-├── pyproject.toml                  # 项目配置
-├── requirements.txt                # Python 依赖
-└── awesome_bot/
-    └── plugins/                    # 插件目录
-        ├── hello.py                # 打招呼插件
-        ├── help.py                 # 帮助菜单插件
-        ├── weather.py              # 天气查询插件（模拟数据）
-        ├── tools.py                # 实用工具（时间、骰子）
-        ├── guess_number.py         # 猜数字游戏
-        ├── joke.py                 # 随机笑话
-        └── status.py               # 机器人状态查看
+├── bot.py                # 机器人入口
+├── pyproject.toml        # 项目配置
+├── requirements.txt      # 依赖列表
+├── awesome_bot/
+│   ├── __init__.py
+│   └── plugins/          # 插件目录
+│       ├── affinity.py           # 好感度系统
+│       ├── ai_chat.py            # AI 对话/模型切换
+│       ├── daily_report.py       # 群聊日报（AI 总结）
+│       ├── hello.py              # 打招呼
+│       ├── help.py               # 帮助菜单
+│       ├── hotsearch.py          # 微博/百度热搜
+│       ├── luck.py               # 今日运势
+│       ├── plus_one.py           # 自动+1
+│       ├── poke.py               # 拍一拍
+│       ├── remind.py             # 定时提醒
+│       ├── sign.py               # 签到/排行榜
+│       ├── status.py             # 运行状态
+│       ├── tools.py              # 掷骰子
+│       ├── translate.py          # AI 翻译
+│       ├── welcome.py            # 入群欢迎/退群提示
+│       ├── wordcloud_plugin.py   # 群聊词云
+│       └── ...
+├── data/
+│   ├── favor_data.json           # 好感度数据
+│   └── sign_data.json            # 签到数据
+└── README.md
 ```
+
+---
+
+## 🚀 快速开始
+
+### 1. 安装依赖
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# 或 source .venv/bin/activate  # Linux/macOS
+pip install -r requirements.txt
+```
+
+### 2. 配置 QQ 协议端
+
+需配合 OneBot V11 协议实现（如 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core)、[NapCatQQ](https://github.com/NapNeko/NapCatQQ) 等），将反向 WebSocket 地址设为：
+
+```
+ws://127.0.0.1:8080/onebot/v11/ws
+```
+
+### 3. 启动机器人
+
+```bash
+python bot.py
+```
+
+---
+
+## 🧩 插件功能一览
+
+| 功能         | 主要命令/触发词         | 简介 |
+|--------------|------------------------|------|
+| 打招呼       | /hello /hi /你好       | 问候机器人 |
+| 帮助菜单     | /help /帮助 /菜单      | 查看功能列表 |
+| AI 对话      | @机器人 /chat /模型 /切换ai | 支持多模型AI对话 |
+| 群聊日报     | /report                | AI 总结群聊内容 |
+| 热搜         | /hot /热搜 /hotsearch  | 微博/百度热搜 |
+| 今日运势     | /luck /运势            | 查看今日运势 |
+| 自动+1       | 连续3条相同消息        | 自动跟+1 |
+| 拍一拍       | /poke /拍 @人 [次数]   | 拍一拍成员 |
+| 定时提醒     | /remind /提醒          | 定时闹钟提醒 |
+| 签到系统     | /sign /签到 /rank      | 每日签到/排行榜 |
+| 状态查询     | /status /状态          | 查看机器人运行状态 |
+| 掷骰子       | /roll /掷骰子          | 掷骰子小游戏 |
+| AI 翻译      | /translate /翻译       | 多语言AI翻译 |
+| 入群欢迎     | 新成员入群/退群        | 自动欢迎/提示 |
+| 群聊词云     | /wordcloud /词云 /wc   | 群消息生成词云 |
+| 好感度系统   | /favor /favorrank      | 互动提升好感度 |
+
+---
+
+## 📝 说明与注意事项
+
+- Python 版本需 >= 3.9
+- 需配合 OneBot V11 协议端（如 Lagrange.Core、NapCatQQ 等）
+- AI/日报/翻译等部分功能需配置 API KEY（详见插件源码注释）
+- 插件目录可自由扩展，按需增删
+- 数据文件默认保存在 data/ 目录
+
+---
+
+## 📚 参考文档
+
+- [NoneBot2 官方文档](https://nonebot.dev/docs/)
+- [OneBot V11 适配器](https://onebot.adapters.nonebot.dev/)
+- [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core)
+- [NapCatQQ](https://github.com/NapNeko/NapCatQQ)
+
 
 ## 🚀 快速开始
 
@@ -122,7 +208,8 @@ async def handle(event: MessageEvent):
 - 需要搭配 OneBot V11 协议端使用（如 Lagrange / NapCatQQ）
 
 ## 📚 参考文档
-
+- [Napcat官方文档](https://napneko.github.io/)
 - [NoneBot2 官方文档](https://nonebot.dev/docs/)
 - [OneBot V11 适配器](https://onebot.adapters.nonebot.dev/)
 - [NoneBot2 商店](https://nonebot.dev/store/plugins) - 更多第三方插件
+=======
